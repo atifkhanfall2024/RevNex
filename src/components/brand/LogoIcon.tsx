@@ -13,7 +13,7 @@ type LogoIconProps = {
  */
 export function LogoIcon({ size = 40, className }: LogoIconProps) {
   const gradId = useId().replace(/:/g, "");
-  const shineId = `${gradId}-shine";
+  const shineId = gradId + "-shine";
 
   return (
     <svg
@@ -37,8 +37,8 @@ export function LogoIcon({ size = 40, className }: LogoIconProps) {
         </linearGradient>
       </defs>
 
-      <rect x="2" y="2" width="44" height="44" rx="12" fill={`url(#${gradId})`} />
-      <rect x="2" y="2" width="44" height="22" rx="12" fill={`url(#${shineId})`} />
+      <rect x="2" y="2" width="44" height="44" rx="12" fill={"url(#" + gradId + ")"} />
+      <rect x="2" y="2" width="44" height="22" rx="12" fill={"url(#" + shineId + ")"} />
       <rect
         x="3"
         y="3"
