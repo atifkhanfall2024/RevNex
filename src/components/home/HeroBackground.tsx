@@ -1,140 +1,73 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { gsap, registerGsap } from "@/lib/gsap";
-import { images, videoSources } from "@/data/images";
+import { heroSlides } from "@/data/images";
+import { cn } from "@/lib/utils";
 
-function forcePlay(video: HTMLVideoElement) {
-  video.muted = true;
-  video.defaultMuted = true;
-  video.volume = 0;
-  video.playsInline = true;
-  video.setAttribute("playsinline", "");
-  video.setAttribute("webkit-playsinline", "");
-  return video.play();
-}
+const SLIDE_MS = 7000;
 
-/** Background-only video — autoplay on load, subtle Ken Burns via GSAP */
+/** Crossfading photo slider — no video, contained inside the hero */
 export function HeroBackground() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [sourceIndex, setSourceIndex] = useState(0);
-  const [videoFailed, setVideoFailed] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
-  const currentSrc = videoSources[sourceIndex] ?? videoSources[0];
-
-  const tryPlay = useCallback(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    forcePlay(video)?.catch(() => {});
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduceMotion(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
-  const tryNextSource = useCallback(() => {
-    setSourceIndex((i) => {
-      const next = i + 1;
-      if (next < videoSources.length) return next;
-      setVideoFailed(true);
-      return i;
-    });
+  const goTo = useCallback((i: number) => {
+    setIndex((i + heroSlides.length) % heroSlides.length);
   }, []);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video || videoFailed) return;
-
-    tryPlay();
-
-    const events = ["loadeddata", "canplay", "canplaythrough"] as const;
-    events.forEach((e) => video.addEventListener(e, tryPlay));
-
-    const retry = window.setInterval(() => {
-      if (video.paused && !videoFailed) tryPlay();
-    }, 800);
-
-    const stopRetry = window.setTimeout(() => clearInterval(retry), 12000);
-
-    return () => {
-      events.forEach((e) => video.removeEventListener(e, tryPlay));
-      clearInterval(retry);
-      clearTimeout(stopRetry);
-    };
-  }, [currentSrc, tryPlay, videoFailed]);
-
-  useEffect(() => {
-    registerGsap();
-    const container = containerRef.current;
-    const video = videoRef.current;
-    if (!container || videoFailed) return;
-
-    const target = video ?? container.querySelector("img");
-    if (!target) return;
-
-    const tween = gsap.fromTo(
-      target,
-      { scale: 1.08 },
-      {
-        scale: 1,
-        duration: 18,
-        ease: "none",
-        repeat: -1,
-        yoyo: true,
-      },
-    );
-
-    return () => {
-      tween.kill();
-    };
-  }, [videoFailed, currentSrc]);
+    if (reduceMotion || heroSlides.length < 2) return;
+    const id = window.setInterval(() => {
+      setIndex((i) => (i + 1) % heroSlides.length);
+    }, SLIDE_MS);
+    return () => clearInterval(id);
+  }, [reduceMotion]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-0" aria-hidden>
-      {/* Mobile — static image */}
-      <Image
-        src={images.heroMobile}
-        alt=""
-        fill
-        priority
-        className="object-cover lg:hidden"
-        sizes="100vw"
-      />
-
-      {/* Desktop fallback if all video sources fail */}
-      {videoFailed && (
+    <div className="absolute inset-0 overflow-hidden">
+      {heroSlides.map((slide, i) => (
         <Image
-          src={images.billingDashboard}
+          key={slide.src}
+          src={slide.src}
           alt=""
           fill
-          priority
-          className="hidden object-cover lg:block"
+          priority={i === 0}
           sizes="100vw"
+          className={cn(
+            "object-cover transition-opacity duration-[1400ms] ease-in-out",
+            i === index ? "opacity-100" : "opacity-0",
+          )}
         />
-      )}
+      ))}
 
-      {/* Desktop — autoplay background video */}
-      {!videoFailed && (
-        <video
-          ref={videoRef}
-          key={currentSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster={images.billingDashboard}
-          className="absolute inset-0 hidden h-full w-full object-cover lg:block"
-          src={currentSrc}
-          onLoadedData={tryPlay}
-          onCanPlay={tryPlay}
-          onError={tryNextSource}
-        />
-      )}
+      <div className="absolute inset-0 bg-slate-950/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/[0.97] via-slate-950/85 to-slate-900/55" />
 
-      {/* Professional overlay — video visible but text readable */}
-      <div className="absolute inset-0 bg-brand-950/55" />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/90 via-brand-950/70 to-brand-950/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(16,185,129,0.14),transparent_55%)]" />
-      <div className="hero-grid absolute inset-0 opacity-[0.35]" />
+      <div className="absolute bottom-6 right-4 z-[1] flex items-center gap-2 sm:bottom-8 sm:right-8">
+        {heroSlides.map((slide, i) => (
+          <button
+            key={slide.src}
+            type="button"
+            onClick={() => goTo(i)}
+            className={cn(
+              "h-2 rounded-full transition-all duration-300",
+              i === index
+                ? "w-7 bg-white/90"
+                : "w-2 bg-white/35 hover:bg-white/55",
+            )}
+            aria-label={`Show slide: ${slide.caption}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }

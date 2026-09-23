@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "ProClaimCare",
-  tagline: "US Healthcare Revenue Cycle Management",
+  tagline: "Medical billing for physician practices",
   description:
-    "ProClaimCare delivers end-to-end revenue cycle management for physician practices, medical groups, and outpatient clinics across the United States.",
+    "ProClaimCare helps physician offices and clinics with billing — from benefits checks and authorizations to payments and denied claims — so staff can focus on patients.",
   email: "info@proclaimcare.com",
   phone: "+1 (304) 553-7623",
   phoneHref: "tel:+13045537623",

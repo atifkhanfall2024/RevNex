@@ -68,9 +68,9 @@ export function RCMChartsSection() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimateIn className="mb-14">
           <SectionHeading
-            eyebrow="Performance analytics"
-            title="Real-time RCM insights"
-            description="Track collections, denials, and A/R aging with clear dashboards — built for practice owners who want transparency."
+            eyebrow="Reporting"
+            title="Numbers you can ask questions about"
+            description="Collections, denials, and aging in one place — the same views we walk through on your monthly check-in."
           />
         </AnimateIn>
 

@@ -14,9 +14,10 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
         <div className="surface-card flex flex-col items-start justify-between gap-6 border-slate-800/80 bg-slate-900/40 p-6 sm:flex-row sm:items-center sm:p-8">
           <div>
-            <p className="text-lg font-bold text-white">Ready to improve your RCM?</p>
+            <p className="text-lg font-bold text-white">Questions about your billing?</p>
             <p className="mt-1 max-w-md text-sm text-slate-400">
-              Start with a free 2-week assessment or book a consultation with our team.
+              Ask for a short review or set up a call — we&apos;ll tell you honestly if we&apos;re a
+              good fit.
             </p>
           </div>
           <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">

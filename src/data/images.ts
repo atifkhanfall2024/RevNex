@@ -1,3 +1,23 @@
+/** Hero slider — real clinic / team scenes (not dashboard stock) */
+export const heroSlides = [
+  {
+    src: "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1600&q=85&auto=format&fit=crop",
+    caption: "Care team at work",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=85&auto=format&fit=crop",
+    caption: "Outpatient clinic",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1631217868264-e5b165bb1e93?w=1600&q=85&auto=format&fit=crop",
+    caption: "Physician office",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=85&auto=format&fit=crop",
+    caption: "Patient care",
+  },
+] as const;
+
 /** High-quality medical billing & healthcare imagery (Unsplash) */
 export const images = {
   hero: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=90&auto=format&fit=crop",

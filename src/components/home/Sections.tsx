@@ -8,7 +8,6 @@ import {
   Hospital,
   Stethoscope,
   ArrowRight,
-  ShieldCheck,
 } from "lucide-react";
 import { audiences } from "@/data/whoWeServe";
 import { specialties } from "@/data/specialties";
@@ -185,18 +184,18 @@ export function CTASection() {
             <div className="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-900/90 to-brand-800/85" />
             <div className="relative px-8 py-16 text-center sm:px-16 sm:py-20">
               <h2 className="text-3xl font-bold text-white sm:text-4xl">
-                Ready to Optimize Your Revenue Cycle?
+                Not sure where to start?
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-300">
-                Start with a free 2-week RCM assessment. We&apos;ll analyze your
-                billing performance and show where revenue is being lost.
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+                We can review two weeks of your billing — no pressure, no long contract — and
+                point out quick fixes and bigger patterns we see.
               </p>
-              <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Button href="/free-assessment" size="lg" variant="secondary">
-                  Free 2-week RCM assessment
+              <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+                <Button href="/free-assessment" size="lg" variant="secondary" className="w-full sm:w-auto">
+                  Request a 2-week review
                 </Button>
-                <Button href="/book-consultation" size="lg" variant="white">
-                  Book a Consultation
+                <Button href="/book-consultation" size="lg" variant="white" className="w-full sm:w-auto">
+                  Schedule a call
                 </Button>
               </div>
             </div>
@@ -242,27 +241,13 @@ export function TrustSection() {
 }
 
 export function HomePreviewBanner() {
-  const items = [
-    { label: "HIPAA Compliant", icon: ShieldCheck },
-    { label: "Dedicated Specialists", icon: Users },
-    { label: "7 States Active", icon: Building2 },
-    { label: "10+ Specialties", icon: Stethoscope },
-  ] as const;
-
   return (
-    <section className="relative z-20 -mt-6 border-b border-slate-100 bg-white/95 py-4 shadow-sm backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/95 sm:py-5">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-10 sm:gap-y-3 sm:px-6 lg:px-8">
-        {items.map((item, index) => {
-          const Icon = item.icon;
-          return (
-            <AnimateIn key={item.label} delay={index * 80} variant="fade-in" duration={0.6}>
-              <div className="flex items-center justify-center gap-2 rounded-xl border border-slate-100 bg-slate-50/80 px-3 py-2.5 text-xs font-semibold text-slate-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-sm">
-                <Icon className="h-4 w-4 shrink-0 text-accent-500" />
-                {item.label}
-              </div>
-            </AnimateIn>
-          );
-        })}
+    <section className="relative z-20 -mt-4 border-b border-slate-200/80 bg-[var(--background)] py-5 dark:border-slate-800">
+      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+        <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 sm:text-base">
+          HIPAA-aware workflows · real people on your account · practices in{" "}
+          <span className="font-medium text-slate-800 dark:text-slate-200">7 states</span> today
+        </p>
       </div>
     </section>
   );

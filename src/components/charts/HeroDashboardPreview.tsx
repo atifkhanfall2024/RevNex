@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Area,
   AreaChart,
@@ -288,42 +288,18 @@ export function HeroDashboardPreview() {
   const cardRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<ChartTab>("collections");
-  const [paused, setPaused] = useState(false);
-
-  const cycleTab = useCallback(() => {
-    setActiveTab((prev) => {
-      const idx = tabs.findIndex((t) => t.id === prev);
-      return tabs[(idx + 1) % tabs.length].id;
-    });
-  }, []);
-
-  useEffect(() => {
-    if (paused) return;
-    const timer = window.setInterval(cycleTab, 5000);
-    return () => clearInterval(timer);
-  }, [paused, cycleTab]);
-
   useEffect(() => {
     registerGsap();
     const card = cardRef.current;
     if (!card) return;
 
     const ctx = gsap.context(() => {
-      gsap.to(".hero-float-badge", {
-        y: -8,
-        duration: 2.6,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        stagger: 0.35,
-      });
-
       gsap.from(".hero-stat-pill", {
         opacity: 0,
-        y: 14,
-        duration: 0.5,
-        stagger: 0.08,
-        delay: 0.9,
+        y: 10,
+        duration: 0.45,
+        stagger: 0.06,
+        delay: 0.5,
         ease: "power2.out",
       });
     }, card);
@@ -345,30 +321,16 @@ export function HeroDashboardPreview() {
   const meta = tabMeta[activeTab];
 
   return (
-    <div
-      ref={cardRef}
-      className="relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="overflow-hidden rounded-3xl border border-white/15 bg-white/[0.07] p-5 shadow-2xl shadow-black/50 backdrop-blur-2xl sm:p-6">
+    <div ref={cardRef} className="relative w-full max-w-full">
+      <div className="overflow-hidden rounded-2xl border border-white/12 bg-slate-900/40 p-4 shadow-lg sm:p-5">
+        <p className="text-xs text-slate-400">
+          Example metrics from client reports — tap a tab to compare
+        </p>
         {/* Header */}
-        <div className="mb-4 flex items-start justify-between gap-3">
-          <div>
-            <div className="flex items-center gap-2">
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                RCM Dashboard
-              </p>
-              <span className="inline-flex items-center gap-1 rounded-full bg-accent-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-accent-300">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-70" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-400" />
-                </span>
-                Live
-              </span>
-            </div>
-            <p className="mt-1 text-xl font-bold text-white">{meta.title}</p>
-            <p className="mt-0.5 text-2xl font-extrabold tabular-nums text-accent-300">
+        <div className="mb-4 mt-3 flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-white">{meta.title}</p>
+            <p className="mt-0.5 text-xl font-bold tabular-nums text-emerald-300/95 sm:text-2xl">
               {meta.headline}
             </p>
           </div>
@@ -409,29 +371,31 @@ export function HeroDashboardPreview() {
         </div>
 
         {/* Animated chart */}
-        <div ref={chartRef} key={activeTab} className="relative -mx-1">
+        <div ref={chartRef} key={activeTab} className="relative min-w-0 w-full overflow-hidden">
           {activeTab === "collections" && <CollectionsChart />}
           {activeTab === "aging" && <AgingChart />}
           {activeTab === "denials" && <DenialsChart />}
         </div>
 
         {/* Mini claim status donut row */}
-        <div className="mt-4 flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5">
-          <Activity className="h-4 w-4 shrink-0 text-brand-400" />
-          <div className="flex flex-1 gap-0.5 overflow-hidden rounded-full h-2">
-            {claimStatus.map((item) => (
-              <div
-                key={item.name}
-                className="h-full transition-all duration-700 ease-out"
-                style={{
-                  width: `${item.value}%`,
-                  backgroundColor: item.fill,
-                }}
-                title={`${item.name}: ${item.value}%`}
-              />
-            ))}
+        <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5">
+          <div className="flex items-center gap-2">
+            <Activity className="h-4 w-4 shrink-0 text-brand-400" />
+            <div className="flex h-2 min-w-0 flex-1 gap-0.5 overflow-hidden rounded-full">
+              {claimStatus.map((item) => (
+                <div
+                  key={item.name}
+                  className="h-full"
+                  style={{
+                    width: `${item.value}%`,
+                    backgroundColor: item.fill,
+                  }}
+                  title={`${item.name}: ${item.value}%`}
+                />
+              ))}
+            </div>
           </div>
-          <div className="flex shrink-0 gap-2 text-[10px] font-medium text-slate-400">
+          <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-medium text-slate-400">
             {claimStatus.map((item) => (
               <span key={item.name} className="flex items-center gap-1">
                 <span className="h-1.5 w-1.5 rounded-full" style={{ background: item.fill }} />
@@ -468,28 +432,6 @@ export function HeroDashboardPreview() {
           ))}
         </div>
 
-        {!paused && (
-          <p className="mt-3 text-center text-[10px] text-slate-500">
-            Auto-cycling charts · hover to pause
-          </p>
-        )}
-      </div>
-
-      {/* Floating badges */}
-      <div className="hero-float-badge absolute -bottom-5 -left-4 hidden rounded-2xl border border-accent-400/30 bg-accent-500/20 px-4 py-3 shadow-xl backdrop-blur-xl md:block sm:-bottom-6 sm:-left-6 sm:px-5 sm:py-3.5">
-        <p className="text-[10px] font-semibold uppercase tracking-wide text-accent-200 sm:text-xs">
-          Revenue Recovered
-        </p>
-        <p className="text-xl font-bold tabular-nums text-white sm:text-2xl">
-          +$<AnimatedCounter value={127} suffix="K" duration={2200} />
-        </p>
-      </div>
-
-      <div className="hero-float-badge absolute -right-2 top-14 hidden rounded-2xl border border-white/15 bg-white/10 px-3 py-2.5 backdrop-blur-xl md:block sm:top-16 sm:px-4 sm:py-3">
-        <p className="text-xl font-bold tabular-nums text-white sm:text-2xl">
-          <AnimatedCounter value={98} suffix="%" duration={1800} />
-        </p>
-        <p className="text-[10px] font-medium text-slate-300 sm:text-xs">Clean Claim Rate</p>
       </div>
     </div>
   );
