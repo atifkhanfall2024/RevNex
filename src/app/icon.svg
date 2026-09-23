@@ -1,19 +1,23 @@
 <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="revnex-g" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1e3a8a"/>
-      <stop offset="0.55" stop-color="#2563eb"/>
+    <linearGradient id="pcc-g" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f3460"/>
+      <stop offset="0.5" stop-color="#2563eb"/>
       <stop offset="1" stop-color="#0d9488"/>
     </linearGradient>
-    <linearGradient id="revnex-shine" x1="24" y1="4" x2="24" y2="28" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ffffff" stop-opacity="0.22"/>
+    <linearGradient id="pcc-shine" x1="24" y1="4" x2="24" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.24"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#revnex-g)"/>
-  <rect x="2" y="2" width="44" height="22" rx="11" fill="url(#revnex-shine)"/>
-  <rect x="3" y="3" width="42" height="42" rx="10" stroke="white" stroke-opacity="0.12" fill="none"/>
-  <path d="M33.5 28.5c0-7.5-6-13.5-13.5-13.5S6.5 21 6.5 28.5" stroke="#6ee7b7" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-  <path d="M6.5 28.5l3.8-3.8M6.5 28.5l3.8 3.2" stroke="#6ee7b7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path fill="white" d="M14.5 13.5h10.8c3.86 0 7 3.14 7 7s-3.14 7-7 7h-5.3v9.5h-5.5V13.5zm5.5 9.2h5.3c1.77 0 3.2-1.43 3.2-3.2s-1.43-3.2-3.2-3.2h-5.3v6.4z"/>
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#pcc-g)"/>
+  <rect x="2" y="2" width="44" height="22" rx="12" fill="url(#pcc-shine)"/>
+  <rect x="3" y="3" width="42" height="42" rx="11" stroke="white" stroke-opacity="0.14" fill="none"/>
+  <path fill="white" d="M11.5 11.5h8.8c4.1 0 7.4 3.3 7.4 7.4s-3.3 7.4-7.4 7.4h-4.3v11.2h-4.5V11.5zm4.5 10.6h4.3c1.9 0 3.4-1.5 3.4-3.4s-1.5-3.4-3.4-3.4h-4.3v6.8z"/>
+  <path d="M22.5 13.5h13c1.2 0 2.2 1 2.2 2.2v19.6c0 1.2-1 2.2-2.2 2.2h-13c-1.2 0-2.2-1-2.2-2.2V15.7c0-1.2 1-2.2 2.2-2.2z" fill="white" fill-opacity="0.92"/>
+  <path d="M26.5 11.5h5.5c0.6 0 1 0.4 1 1v3.5h-6.5V12.5c0-0.55 0.45-1 1-1z" fill="#6ee7b7"/>
+  <path d="M21.8 19h14M21.8 22.8h14M21.8 26.6h9.5" stroke="#64748b" stroke-width="1.15" stroke-linecap="round" stroke-opacity="0.55"/>
+  <circle cx="33.5" cy="31" r="6.25" fill="#10b981"/>
+  <path d="M30.8 31.1l1.7 1.7 3.6-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10 38.5c4-3 8-3 12 0s8 3 12 0" stroke="#6ee7b7" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.85"/>
 </svg>

@@ -6,6 +6,7 @@ import { images } from "@/data/images";
 import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { siteConfig } from "@/data/site";
 
 type Props = { params: Promise<{ code: string }> };
 
@@ -40,7 +41,7 @@ export default async function StateDetailPage({ params }: Props) {
           <AnimateIn>
             <div className="mb-6 flex items-center gap-2 text-brand-600 dark:text-brand-400">
               <MapPin className="h-5 w-5" />
-              <span className="font-semibold">RevNex RCM — {state.name}</span>
+              <span className="font-semibold">{siteConfig.name} RCM — {state.name}</span>
             </div>
             <p className="text-body text-lg leading-relaxed">
               Our {state.name} team handles prior authorizations, eligibility verification,

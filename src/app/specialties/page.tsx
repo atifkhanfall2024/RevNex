@@ -5,10 +5,11 @@ import { PageHero } from "@/components/ui/PageHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SpecialtyCard } from "@/components/specialties/SpecialtyCard";
 
+import { siteConfig } from "@/data/site";
+
 export const metadata: Metadata = {
   title: "Specialities We Work With",
-  description:
-    "Medical specialties RevNex serves — from primary care to dermatology and behavioral health.",
+  description: `Medical specialties ${siteConfig.name} serves — from primary care to dermatology and behavioral health.`,
 };
 
 export default function SpecialtiesPage() {

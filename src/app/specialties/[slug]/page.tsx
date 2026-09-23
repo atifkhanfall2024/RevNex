@@ -5,6 +5,7 @@ import { images } from "@/data/images";
 import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { siteConfig } from "@/data/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -38,7 +39,7 @@ export default async function SpecialtyDetailPage({ params }: Props) {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <AnimateIn>
             <p className="text-body text-lg leading-relaxed">
-              RevNex provides dedicated revenue cycle management for{" "}
+              {siteConfig.name} provides dedicated revenue cycle management for{" "}
               {specialty.title.toLowerCase()} practices. Our team understands the unique
               coding requirements, payer policies, and authorization workflows specific to
               your specialty.

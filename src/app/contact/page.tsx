@@ -8,7 +8,7 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with RevNex for US healthcare revenue cycle management services.",
+  description: `Get in touch with ${siteConfig.name} for US healthcare revenue cycle management services.`,
 };
 
 export default function ContactPage() {

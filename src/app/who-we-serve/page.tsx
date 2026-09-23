@@ -6,10 +6,11 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 
+import { siteConfig } from "@/data/site";
+
 export const metadata: Metadata = {
   title: "Who We Serve",
-  description:
-    "RevNex serves physician practices, medical groups, outpatient clinics, and practices across the US.",
+  description: `${siteConfig.name} serves physician practices, medical groups, outpatient clinics, and practices across the US.`,
 };
 
 const icons = [Building2, Users, Hospital, Stethoscope];

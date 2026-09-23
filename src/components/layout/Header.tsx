@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-all duration-500",
+        "sticky top-0 z-50 overflow-x-hidden transition-all duration-500",
         transparentHome
           ? "border-b border-white/10 bg-transparent"
           : scrolled
@@ -39,9 +39,9 @@ export function Header() {
             : "border-b border-slate-200/40 bg-white/80 backdrop-blur-lg dark:border-slate-800/40 dark:bg-slate-950/80",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        {/* Logo — light on home hero, dark elsewhere */}
-        <Logo size="md" variant={transparentHome ? "light" : "dark"} />
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-2 px-3 sm:h-16 sm:gap-4 sm:px-6 lg:px-8">
+        <Logo size="sm" variant={transparentHome ? "light" : "dark"} className="sm:hidden" />
+        <Logo size="md" variant={transparentHome ? "light" : "dark"} className="hidden sm:flex" />
 
         {/* Desktop nav — pill links, single row */}
         <nav className="hidden items-center justify-center gap-1 lg:flex">
@@ -79,14 +79,15 @@ export function Header() {
           <a
             href={siteConfig.phoneHref}
             className={cn(
-              "hidden items-center gap-1.5 whitespace-nowrap text-[13px] font-medium transition-colors xl:flex",
+              "hidden items-center gap-1.5 whitespace-nowrap text-[13px] font-medium transition-colors sm:flex",
               transparentHome
                 ? "text-slate-200 hover:text-white"
                 : "text-slate-600 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400",
             )}
+            aria-label="Call us"
           >
-            <Phone className="h-3.5 w-3.5" />
-            {siteConfig.phone}
+            <Phone className="h-3.5 w-3.5 shrink-0" />
+            <span className="hidden md:inline">{siteConfig.phone}</span>
           </a>
 
           <Link

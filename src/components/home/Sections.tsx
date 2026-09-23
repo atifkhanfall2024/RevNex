@@ -14,6 +14,7 @@ import { audiences } from "@/data/whoWeServe";
 import { specialties } from "@/data/specialties";
 import { states } from "@/data/states";
 import { images, specialtyImages } from "@/data/images";
+import { siteConfig } from "@/data/site";
 import { Button } from "@/components/ui/Button";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
@@ -35,8 +36,8 @@ export function WhoWeServeSection() {
                 Who We Serve
               </h2>
               <p className="mt-4 text-slate-600 dark:text-slate-400">
-                Whether you&apos;re a solo practitioner or a multi-location group,
-                RevNex scales with your practice.
+                Whether you&apos;re a solo practitioner or a multi-location group,{" "}
+                {siteConfig.name} scales with your practice.
               </p>
             </AnimateIn>
 

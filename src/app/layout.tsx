@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const themeScript = `
 (function () {
   try {
-    var t = localStorage.getItem('revnex-theme');
+    var t = localStorage.getItem('proclaimcare-theme') || localStorage.getItem('revnex-theme');
     var dark = t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches);
     var root = document.documentElement;
     root.classList.remove('light', 'dark');
@@ -43,11 +43,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        <Script id="revnex-theme" strategy="beforeInteractive">
+        <Script id="proclaimcare-theme" strategy="beforeInteractive">
           {themeScript}
         </Script>
       </head>
-      <body className="flex min-h-full flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
+      <body className="flex min-h-full flex-col overflow-x-hidden bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
         <ThemeProvider>
           <GsapProvider>
             <Header />

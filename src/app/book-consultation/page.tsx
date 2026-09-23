@@ -8,7 +8,7 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Book a Consultation",
-  description: "Schedule a free consultation with RevNex RCM experts.",
+  description: `Schedule a free consultation with ${siteConfig.name} RCM experts.`,
 };
 
 export default function BookConsultationPage() {

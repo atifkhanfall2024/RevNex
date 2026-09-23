@@ -7,10 +7,11 @@ import { images } from "@/data/images";
 import { PageHero } from "@/components/ui/PageHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 
+import { siteConfig } from "@/data/site";
+
 export const metadata: Metadata = {
   title: "Services We Offer",
-  description:
-    "RevNex RCM services — scheduling, prior auth, VOB, charge entry, payment posting, and denial management.",
+  description: `${siteConfig.name} RCM services — scheduling, prior auth, VOB, charge entry, payment posting, and denial management.`,
 };
 
 export default function ServicesPage() {

@@ -8,7 +8,7 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "About RevNex — US healthcare revenue cycle management experts.",
+  description: `About ${siteConfig.name} — US healthcare revenue cycle management experts.`,
 };
 
 const values = [

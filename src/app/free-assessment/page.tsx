@@ -4,10 +4,11 @@ import { images } from "@/data/images";
 import { PageHero } from "@/components/ui/PageHero";
 import { CheckCircle2 } from "lucide-react";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Free 2-week RCM assessment",
-  description: "Get a free 2-week revenue cycle management assessment from RevNex experts.",
+  description: `Get a free 2-week revenue cycle management assessment from ${siteConfig.name} experts.`,
 };
 
 const assessmentIncludes = [

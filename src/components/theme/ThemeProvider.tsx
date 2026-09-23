@@ -10,6 +10,9 @@ import {
 
 type Theme = "light" | "dark";
 
+const THEME_KEY = "proclaimcare-theme";
+const LEGACY_THEME_KEY = "revnex-theme";
+
 type ThemeContextValue = {
   theme: Theme;
   toggleTheme: () => void;
@@ -29,11 +32,19 @@ function applyTheme(theme: Theme) {
   root.style.colorScheme = theme;
 }
 
+function readStoredTheme(): Theme | null {
+  const stored =
+    (localStorage.getItem(THEME_KEY) as Theme | null) ??
+    (localStorage.getItem(LEGACY_THEME_KEY) as Theme | null);
+  if (stored === "light" || stored === "dark") return stored;
+  return null;
+}
+
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "light";
   if (document.documentElement.classList.contains("dark")) return "dark";
-  const stored = localStorage.getItem("revnex-theme") as Theme | null;
-  if (stored === "light" || stored === "dark") return stored;
+  const stored = readStoredTheme();
+  if (stored) return stored;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
@@ -48,14 +59,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = useCallback((next: Theme) => {
     setThemeState(next);
-    localStorage.setItem("revnex-theme", next);
+    localStorage.setItem(THEME_KEY, next);
     applyTheme(next);
   }, []);
 
   const toggleTheme = useCallback(() => {
     setThemeState((prev) => {
       const next = prev === "light" ? "dark" : "light";
-      localStorage.setItem("revnex-theme", next);
+      localStorage.setItem(THEME_KEY, next);
       applyTheme(next);
       return next;
     });

@@ -476,7 +476,7 @@ export function HeroDashboardPreview() {
       </div>
 
       {/* Floating badges */}
-      <div className="hero-float-badge absolute -bottom-5 -left-4 rounded-2xl border border-accent-400/30 bg-accent-500/20 px-4 py-3 shadow-xl backdrop-blur-xl sm:-bottom-6 sm:-left-6 sm:px-5 sm:py-3.5">
+      <div className="hero-float-badge absolute -bottom-5 -left-4 hidden rounded-2xl border border-accent-400/30 bg-accent-500/20 px-4 py-3 shadow-xl backdrop-blur-xl md:block sm:-bottom-6 sm:-left-6 sm:px-5 sm:py-3.5">
         <p className="text-[10px] font-semibold uppercase tracking-wide text-accent-200 sm:text-xs">
           Revenue Recovered
         </p>
@@ -485,7 +485,7 @@ export function HeroDashboardPreview() {
         </p>
       </div>
 
-      <div className="hero-float-badge absolute -right-2 top-14 rounded-2xl border border-white/15 bg-white/10 px-3 py-2.5 backdrop-blur-xl sm:top-16 sm:px-4 sm:py-3">
+      <div className="hero-float-badge absolute -right-2 top-14 hidden rounded-2xl border border-white/15 bg-white/10 px-3 py-2.5 backdrop-blur-xl md:block sm:top-16 sm:px-4 sm:py-3">
         <p className="text-xl font-bold tabular-nums text-white sm:text-2xl">
           <AnimatedCounter value={98} suffix="%" duration={1800} />
         </p>

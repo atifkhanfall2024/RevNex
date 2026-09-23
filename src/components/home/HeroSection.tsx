@@ -59,11 +59,11 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative -mt-16 min-h-[92vh] overflow-hidden bg-brand-950 pt-16 lg:min-h-[88vh]"
+      className="relative -mt-16 min-h-[85vh] overflow-x-hidden bg-brand-950 pt-16 sm:min-h-[92vh] lg:min-h-[88vh]"
     >
       <HeroBackground />
 
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:grid lg:min-h-[88vh] lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14 lg:px-8 lg:py-28">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 sm:py-20 lg:grid lg:min-h-[88vh] lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14 lg:px-8 lg:py-28">
         {/* Left — headline & CTAs */}
         <div ref={leftRef}>
           <p className="hero-badge mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-md">
@@ -71,27 +71,27 @@ export function HeroSection() {
             {siteConfig.tagline}
           </p>
 
-          <h1 className="hero-title text-[2.35rem] font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
+          <h1 className="hero-title text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
             Maximize Revenue with{" "}
             <span className="text-gradient">Expert RCM</span>
           </h1>
 
-          <p className="hero-desc mt-6 max-w-xl text-lg leading-relaxed text-slate-300/95">
-            From prior authorizations to denial management — RevNex handles your
+          <p className="hero-desc mt-6 max-w-xl text-base leading-relaxed text-slate-300/95 sm:text-lg">
+            From prior authorizations to denial management — {siteConfig.name} handles your
             entire revenue cycle so you can focus on patient care.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap">
             <Button
               href="/book-consultation"
               size="lg"
               variant="secondary"
-              className="hero-cta shadow-accent-500/30"
+              className="hero-cta w-full shadow-accent-500/30 sm:w-auto"
             >
               Book a Consultation
               <ArrowRight className="h-5 w-5" />
             </Button>
-            <Button href="/free-assessment" size="lg" variant="white" className="hero-cta">
+            <Button href="/free-assessment" size="lg" variant="white" className="hero-cta w-full sm:w-auto">
               Free 2-week RCM assessment
             </Button>
           </div>
@@ -110,7 +110,7 @@ export function HeroSection() {
         </div>
 
         {/* Right — dashboard preview */}
-        <div ref={rightRef} className="relative mt-14 hidden lg:mt-0 lg:block">
+        <div ref={rightRef} className="relative mx-auto mt-10 hidden w-full max-w-md md:block lg:mt-0 lg:max-w-none">
           <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-accent-500/20 via-brand-500/10 to-transparent blur-2xl" />
           <HeroDashboardPreview />
         </div>

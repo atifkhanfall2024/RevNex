@@ -97,7 +97,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 sm:flex-row">
           <p className="text-sm text-slate-600">
-            &copy; {new Date().getFullYear()} {siteConfig.name} Solutions
+            &copy; {new Date().getFullYear()} {siteConfig.name}
           </p>
           <div className="flex gap-6 text-sm text-slate-600">
             <Link href="/privacy" className="hover:text-white">

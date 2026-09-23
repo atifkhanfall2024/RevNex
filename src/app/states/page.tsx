@@ -5,10 +5,11 @@ import { images } from "@/data/images";
 import { PageHero } from "@/components/ui/PageHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 
+import { siteConfig } from "@/data/site";
+
 export const metadata: Metadata = {
   title: "States We Serve",
-  description:
-    "RevNex RCM in California, Texas, Florida, New York, New Jersey, Pennsylvania, and Massachusetts.",
+  description: `${siteConfig.name} RCM in California, Texas, Florida, New York, New Jersey, Pennsylvania, and Massachusetts.`,
 };
 
 export default function StatesPage() {
