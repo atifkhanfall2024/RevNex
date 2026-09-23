@@ -26,9 +26,9 @@ const variants = {
 };
 
 const sizes = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3.5 text-base",
+  sm: "min-h-9 px-4 py-2 text-sm",
+  md: "min-h-10 px-5 py-2.5 text-sm",
+  lg: "min-h-12 px-7 py-3.5 text-base",
 };
 
 export function Button({
@@ -42,7 +42,7 @@ export function Button({
   disabled,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],
     className,

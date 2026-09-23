@@ -13,7 +13,7 @@ export const siteConfig = {
 export const navLinks = [
   { label: "Services", href: "/services", pageTitle: "Services We Offer" },
   { label: "Who We Serve", href: "/who-we-serve", pageTitle: "Who We Serve" },
-  { label: "Specialties", href: "/specialties", pageTitle: "Specialities We Work With" },
+  { label: "Specialties", href: "/specialties", pageTitle: "Specialties We Work With" },
   { label: "States", href: "/states", pageTitle: "States We Serve" },
   { label: "Contact", href: "/contact", pageTitle: "Contact Us" },
 ];

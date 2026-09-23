@@ -25,6 +25,7 @@ import {
 } from "@/data/chartData";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const tooltipStyle = {
   borderRadius: "12px",
@@ -61,21 +62,16 @@ function ChartCard({
 
 export function RCMChartsSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white py-20 dark:from-slate-900 dark:to-slate-950 sm:py-28">
+    <section className="section-padding relative overflow-hidden bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.06),transparent_60%)]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimateIn className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent-600">
-            Performance Analytics
-          </p>
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
-            Real-Time RCM Insights
-          </h2>
-          <p className="mt-4 text-slate-600 dark:text-slate-400">
-            Track collections, denials, and A/R aging with clear dashboards — built
-            for practice owners who want transparency.
-          </p>
+        <AnimateIn className="mb-14">
+          <SectionHeading
+            eyebrow="Performance analytics"
+            title="Real-time RCM insights"
+            description="Track collections, denials, and A/R aging with clear dashboards — built for practice owners who want transparency."
+          />
         </AnimateIn>
 
         {/* KPI row */}

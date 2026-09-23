@@ -1,20 +1,41 @@
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { siteConfig, navLinks } from "@/data/site";
 import { services } from "@/data/services";
 import { states } from "@/data/states";
 import { Logo } from "@/components/brand/Logo";
+import { Button } from "@/components/ui/Button";
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-800/50 bg-brand-950 text-slate-400">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative border-t border-slate-800/60 bg-brand-950 text-slate-400">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" />
+
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+        <div className="surface-card flex flex-col items-start justify-between gap-6 border-slate-800/80 bg-slate-900/40 p-6 sm:flex-row sm:items-center sm:p-8">
+          <div>
+            <p className="text-lg font-bold text-white">Ready to improve your RCM?</p>
+            <p className="mt-1 max-w-md text-sm text-slate-400">
+              Start with a free 2-week assessment or book a consultation with our team.
+            </p>
+          </div>
+          <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+            <Button href="/free-assessment" variant="outline" className="border-slate-600 bg-transparent text-white hover:border-accent-400 hover:text-accent-300">
+              Free assessment
+            </Button>
+            <Button href="/book-consultation" variant="secondary">
+              Book consultation
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+
+        <div className="mt-14 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Logo href="/" size="md" variant="light" showTagline className="mb-4" />
             <p className="text-sm leading-relaxed text-slate-500">
-              {siteConfig.tagline}. Trusted RCM partner for physician practices
-              across the United States.
+              {siteConfig.tagline}. Trusted RCM partner for physician practices across the
+              United States.
             </p>
           </div>
 
@@ -34,13 +55,8 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/free-assessment" className="text-sm transition-colors hover:text-white">
-                  Free 2-week RCM assessment
-                </Link>
-              </li>
-              <li>
-                <Link href="/book-consultation" className="text-sm transition-colors hover:text-white">
-                  Book a Consultation
+                <Link href="/about" className="text-sm transition-colors hover:text-white">
+                  About us
                 </Link>
               </li>
             </ul>

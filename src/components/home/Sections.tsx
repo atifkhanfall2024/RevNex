@@ -19,26 +19,23 @@ import { Button } from "@/components/ui/Button";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { SpecialtyCard } from "@/components/specialties/SpecialtyCard";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const icons = [Building2, Users, Hospital, Stethoscope];
 
 export function WhoWeServeSection() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-20 dark:bg-slate-900/50 sm:py-28">
+    <section className="section-padding relative overflow-hidden bg-slate-50 dark:bg-slate-900/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <AnimateIn>
-              <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent-600">
-                Our Clients
-              </p>
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
-                Who We Serve
-              </h2>
-              <p className="mt-4 text-slate-600 dark:text-slate-400">
-                Whether you&apos;re a solo practitioner or a multi-location group,{" "}
-                {siteConfig.name} scales with your practice.
-              </p>
+              <SectionHeading
+                align="left"
+                eyebrow="Our clients"
+                title="Who we serve"
+                description={`Whether you're a solo practitioner or a multi-location group, ${siteConfig.name} scales with your practice.`}
+              />
             </AnimateIn>
 
             <AnimateIn delay={100}>
@@ -90,18 +87,14 @@ export function WhoWeServeSection() {
 
 export function SpecialtiesSection() {
   return (
-    <section className="bg-white py-20 dark:bg-slate-950 sm:py-28">
+    <section className="section-padding bg-white dark:bg-slate-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimateIn className="mb-14 text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent-600">
-            Expertise
-          </p>
-          <h2 className="text-heading text-3xl font-bold sm:text-4xl">
-            Specialities We Work With
-          </h2>
-          <p className="text-body mx-auto mt-3 max-w-xl">
-            Industry-specific billing knowledge across 10+ medical specialties.
-          </p>
+        <AnimateIn className="mb-14">
+          <SectionHeading
+            eyebrow="Expertise"
+            title="Specialties we work with"
+            description="Industry-specific billing knowledge across 10+ medical specialties."
+          />
         </AnimateIn>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -129,7 +122,7 @@ export function SpecialtiesSection() {
 
 export function StatesSection() {
   return (
-    <section className="relative overflow-hidden bg-background py-20 sm:py-28">
+    <section className="section-padding relative overflow-hidden bg-background">
       <div className="absolute inset-0">
         <Image
           src={images.states}
@@ -140,16 +133,12 @@ export function StatesSection() {
         />
       </div>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimateIn className="mb-14 text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent-600">
-            Coverage
-          </p>
-          <h2 className="text-heading text-3xl font-bold sm:text-4xl">
-            States We Serve
-          </h2>
-          <p className="text-body mx-auto mt-3 max-w-xl">
-            Active RCM operations across key US markets with local payer expertise.
-          </p>
+        <AnimateIn className="mb-14">
+          <SectionHeading
+            eyebrow="Coverage"
+            title="States we serve"
+            description="Active RCM operations across key US markets with local payer expertise."
+          />
         </AnimateIn>
 
         <div className="flex flex-wrap justify-center gap-4">
@@ -182,7 +171,7 @@ export function StatesSection() {
 
 export function CTASection() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="section-padding pb-[calc(var(--section-y)+1rem)] lg:pb-[var(--section-y)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimateIn>
           <div className="relative overflow-hidden rounded-3xl min-h-[280px]">
@@ -227,21 +216,23 @@ export function TrustSection() {
   ];
 
   return (
-    <section className="border-y border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-slate-950">
+    <section className="border-y border-slate-100 bg-white py-10 dark:border-slate-800 dark:bg-slate-950 sm:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
           {stats.map((stat, i) => (
-            <AnimateIn key={stat.label} delay={i * 80} className="text-center">
-              <p className="text-3xl font-extrabold text-brand-600 dark:text-brand-400 sm:text-4xl">
-                <AnimatedCounter
-                  value={stat.value}
-                  prefix={stat.prefix}
-                  suffix={stat.suffix}
-                />
-              </p>
-              <p className="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">
-                {stat.label}
-              </p>
+            <AnimateIn key={stat.label} delay={i * 80}>
+              <div className="rounded-2xl border border-slate-100 bg-slate-50/80 px-4 py-5 text-center dark:border-slate-800 dark:bg-slate-900/50">
+                <p className="text-3xl font-extrabold tabular-nums text-brand-600 dark:text-brand-400 sm:text-4xl">
+                  <AnimatedCounter
+                    value={stat.value}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                  />
+                </p>
+                <p className="mt-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 sm:text-sm sm:normal-case sm:tracking-normal">
+                  {stat.label}
+                </p>
+              </div>
             </AnimateIn>
           ))}
         </div>
@@ -259,14 +250,14 @@ export function HomePreviewBanner() {
   ] as const;
 
   return (
-    <section className="relative z-20 -mt-6 border-b border-slate-100 bg-white/95 py-5 shadow-sm backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/95">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-4 sm:px-6 lg:px-8">
+    <section className="relative z-20 -mt-6 border-b border-slate-100 bg-white/95 py-4 shadow-sm backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/95 sm:py-5">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-10 sm:gap-y-3 sm:px-6 lg:px-8">
         {items.map((item, index) => {
           const Icon = item.icon;
           return (
             <AnimateIn key={item.label} delay={index * 80} variant="fade-in" duration={0.6}>
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
-                <Icon className="h-4 w-4 text-accent-500" />
+              <div className="flex items-center justify-center gap-2 rounded-xl border border-slate-100 bg-slate-50/80 px-3 py-2.5 text-xs font-semibold text-slate-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-sm">
+                <Icon className="h-4 w-4 shrink-0 text-accent-500" />
                 {item.label}
               </div>
             </AnimateIn>

@@ -21,6 +21,7 @@ import { siteConfig } from "@/data/site";
 import { images, serviceImages } from "@/data/images";
 import { services } from "@/data/services";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { gsap, registerGsap } from "@/lib/gsap";
 
 const highlights = [
@@ -59,7 +60,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative -mt-16 min-h-[85vh] overflow-x-hidden bg-brand-950 pt-16 sm:min-h-[92vh] lg:min-h-[88vh]"
+      className="relative -mt-16 min-h-[min(100dvh,920px)] overflow-x-hidden bg-brand-950 pt-16 sm:min-h-[92vh] lg:min-h-[88vh]"
     >
       <HeroBackground />
 
@@ -110,7 +111,10 @@ export function HeroSection() {
         </div>
 
         {/* Right — dashboard preview */}
-        <div ref={rightRef} className="relative mx-auto mt-10 hidden w-full max-w-md md:block lg:mt-0 lg:max-w-none">
+        <div
+          ref={rightRef}
+          className="relative mx-auto mt-10 w-full max-w-md scale-[0.92] sm:scale-100 lg:mt-0 lg:max-w-none"
+        >
           <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-accent-500/20 via-brand-500/10 to-transparent blur-2xl" />
           <HeroDashboardPreview />
         </div>
@@ -133,22 +137,18 @@ const serviceIcons = {
 
 export function ServicesSection() {
   return (
-    <section className="bg-white py-20 dark:bg-slate-950 sm:py-28">
+    <section className="section-padding bg-white dark:bg-slate-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimateIn className="mb-14 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
-          <div>
-            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent-600">
-              What We Do
-            </p>
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
-              Services We Offer
-            </h2>
-            <p className="mt-3 max-w-xl text-slate-600 dark:text-slate-400">
-              Comprehensive revenue cycle management from front desk to final payment.
-            </p>
-          </div>
-          <Button href="/services" variant="outline">
-            View All Services
+        <AnimateIn className="mb-14 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+          <SectionHeading
+            align="left"
+            eyebrow="What we do"
+            title="Services we offer"
+            description="Comprehensive revenue cycle management from front desk to final payment."
+            className="max-w-xl"
+          />
+          <Button href="/services" variant="outline" className="shrink-0">
+            View all services
             <ArrowRight className="h-4 w-4" />
           </Button>
         </AnimateIn>

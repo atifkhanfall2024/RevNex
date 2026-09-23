@@ -48,7 +48,7 @@ export function SpecialtyCard({
               {title}
             </h2>
             <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm transition-colors group-hover:bg-accent-500/40">
-              Click now
+              View
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </span>
           </div>
@@ -82,7 +82,7 @@ export function SpecialtyCard({
             {title}
           </span>
           <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-accent-300 transition-colors group-hover:text-accent-200">
-            Click now
+            Learn more
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </span>
         </div>

@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SkipToMain } from "@/components/layout/SkipToMain";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { GsapProvider } from "@/components/animations/GsapProvider";
 import { siteConfig } from "@/data/site";
@@ -50,8 +51,11 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col overflow-x-hidden bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
         <ThemeProvider>
           <GsapProvider>
+            <SkipToMain />
             <Header />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1 pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
+              {children}
+            </main>
             <Footer />
           </GsapProvider>
         </ThemeProvider>
